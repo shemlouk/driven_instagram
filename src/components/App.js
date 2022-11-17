@@ -1,17 +1,23 @@
 import Corpo from "./Corpo.js";
 import Navbar from "./NavBar.js";
 
+const buttons = [
+  "home",
+  "search-outline",
+  "add-circle-outline",
+  "heart-outline",
+  "person-outline",
+];
+
 export default function App() {
   return (
     <div>
       <Navbar />
       <Corpo />
       <div class="fundo-mobile">
-        <ion-icon name="home"></ion-icon>
-        <ion-icon name="search-outline"></ion-icon>
-        <ion-icon name="add-circle-outline"></ion-icon>
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-icon name="person-outline"></ion-icon>
+        {buttons.map((button) => (
+          <ion-icon name={button}></ion-icon>
+        ))}
       </div>
     </div>
   );

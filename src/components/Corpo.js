@@ -1,7 +1,11 @@
+import Stories from "./Stories";
+
 export default function Corpo() {
   return (
     <div class="corpo">
-      <div class="esquerda"></div>
+      <div class="esquerda">
+        <Stories />
+      </div>
 
       <div class="sidebar">
         <div class="links">
