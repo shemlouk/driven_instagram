@@ -31,10 +31,11 @@ function Post(props) {
   const [likesCounter, setLikesCounter] = useState(props.likes);
   const [likesIcon, setLikesIcon] = useState("heart-outline");
   return (
-    <div className="post">
+    <div data-test="post" className="post">
       <Topo username={props.username} />
       <div className="conteudo">
         <img
+          data-test="post-image"
           onClick={() => {
             handleLikeByImageClick(
               { value: likesIcon, set: setLikesIcon },
@@ -75,6 +76,7 @@ function Acoes(props) {
     <div className="acoes">
       <div>
         <ion-icon
+          data-test="like-post"
           onClick={() => handleLikeByIconClick(props)}
           name={props.likesIcon.value}
         ></ion-icon>
@@ -83,6 +85,7 @@ function Acoes(props) {
       </div>
       <div>
         <ion-icon
+          data-test="save-post"
           onClick={() => setBookmark(changeIcon(bookmark))}
           name={bookmark}
         ></ion-icon>
@@ -97,7 +100,7 @@ function Curtidas(props) {
       <img src={`assets/img/${props.username}.svg`} />
       <div className="texto">
         Curtido por <strong>{props.username}</strong> e{" "}
-        <strong>outras {props.likes} pessoas</strong>
+        <strong data-test="likes-number">outras {props.likes} pessoas</strong>
       </div>
     </div>
   );

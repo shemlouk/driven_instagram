@@ -4,16 +4,18 @@ export default function Usuario() {
   const [name, setName] = useState("Catana");
   const [image, setImage] = useState("assets/img/catanacomics.svg");
   return (
-    <div className="usuario">
+    <div data-test="user" className="usuario">
       <img
+        data-test="profile-image"
         onClick={() => setImage(changeProfile(image, "image"))}
         src={image}
       />
       <div className="texto">
         <strong>catanacomics</strong>
-        <span>
+        <span data-test="name">
           {name}
           <ion-icon
+            data-test="edit-name"
             onClick={() => setName(changeProfile(name, "name"))}
             name="pencil"
           ></ion-icon>
