@@ -28,15 +28,28 @@ export default function Posts() {
 }
 
 function Post(props) {
+  const [likesCounter, setLikesCounter] = useState(props.likes);
+  const [likesIcon, setLikesIcon] = useState("heart-outline");
   return (
     <div className="post">
       <Topo username={props.username} />
       <div className="conteudo">
-        <img src={props.image} />
+        <img
+          onClick={() => {
+            handleLikeByImageClick(
+              { value: likesIcon, set: setLikesIcon },
+              { value: likesCounter, set: setLikesCounter }
+            );
+          }}
+          src={props.image}
+        />
       </div>
       <div className="fundo">
-        <Acoes />
-        <Curtidas username={props.likedBy} likes={props.likes} />
+        <Acoes
+          likesIcon={{ value: likesIcon, set: setLikesIcon }}
+          likesCounter={{ value: likesCounter, set: setLikesCounter }}
+        />
+        <Curtidas username={props.likedBy} likes={likesCounter} />
       </div>
     </div>
   );
@@ -56,15 +69,17 @@ function Topo(props) {
   );
 }
 
-function Acoes() {
+function Acoes(props) {
   const [bookmark, setBookmark] = useState("bookmark-outline");
-  const botoes = ["heart-outline", "chatbubble-outline", "paper-plane-outline"];
   return (
     <div className="acoes">
       <div>
-        {botoes.map((b) => (
-          <ion-icon key={b} name={b}></ion-icon>
-        ))}
+        <ion-icon
+          onClick={() => handleLikeByIconClick(props)}
+          name={props.likesIcon.value}
+        ></ion-icon>
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <ion-icon name="paper-plane-outline"></ion-icon>
       </div>
       <div>
         <ion-icon
@@ -86,6 +101,22 @@ function Curtidas(props) {
       </div>
     </div>
   );
+}
+
+function handleLikeByIconClick(obj) {
+  obj.likesIcon.set(changeIcon(obj.likesIcon.value));
+  if (obj.likesIcon.value.includes("-outline")) {
+    obj.likesCounter.set(obj.likesCounter.value + 1);
+  } else {
+    obj.likesCounter.set(obj.likesCounter.value - 1);
+  }
+}
+
+function handleLikeByImageClick(icon, counter) {
+  icon.set(icon.value.replace("-outline", ""));
+  if (icon.value.includes("-outline")) {
+    counter.set(counter.value + 1);
+  }
 }
 
 function changeIcon(str) {

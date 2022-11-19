@@ -400,3 +400,12 @@ ion-icon {
   margin-left: 5px;
 }
 
+/* React */
+
+ion-icon[name="bookmark"] {
+  color: #FFD510;
+}
+
+ion-icon[name="heart"] {
+  color: #EA4855;
+}
