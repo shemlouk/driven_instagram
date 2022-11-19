@@ -11,11 +11,11 @@ const usernames = [
 
 export default function Stories() {
   return (
-    <div class="stories">
+    <div className="stories">
       {usernames.map((u) => (
-        <Storie username={u} />
+        <Storie key={u} username={u} />
       ))}
-      <div class="setinha">
+      <div className="setinha">
         <ion-icon name="chevron-forward-circle"></ion-icon>
       </div>
     </div>
@@ -24,11 +24,11 @@ export default function Stories() {
 
 function Storie(props) {
   return (
-    <div class="story">
-      <div class="imagem">
+    <div className="story">
+      <div className="imagem">
         <img src={`assets/img/${props.username}.svg`} />
       </div>
-      <div class="usuario">{props.username}</div>
+      <div className="usuario">{props.username}</div>
     </div>
   );
 }

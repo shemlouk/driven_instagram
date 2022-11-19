@@ -14,9 +14,9 @@ export default function App() {
     <div>
       <Navbar />
       <Corpo />
-      <div class="fundo-mobile">
+      <div className="fundo-mobile">
         {buttons.map((b) => (
-          <ion-icon name={b}></ion-icon>
+          <ion-icon key={b} name={b}></ion-icon>
         ))}
       </div>
     </div>

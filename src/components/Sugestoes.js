@@ -23,14 +23,14 @@ const sugestoes = [
 
 export default function Sugestoes() {
   return (
-    <div class="sugestoes">
-      <div class="titulo">
+    <div className="sugestoes">
+      <div className="titulo">
         Sugestões para você
         <div>Ver tudo</div>
       </div>
 
       {sugestoes.map((s) => (
-        <Sugestao {...s} />
+        <Sugestao key={s.username} {...s} />
       ))}
     </div>
   );
@@ -38,15 +38,15 @@ export default function Sugestoes() {
 
 function Sugestao(props) {
   return (
-    <div class="sugestao">
-      <div class="usuario">
+    <div className="sugestao">
+      <div className="usuario">
         <img src={`assets/img/${props.username}.svg`} />
-        <div class="texto">
-          <div class="nome">{props.username}</div>
-          <div class="razao">{props.status}</div>
+        <div className="texto">
+          <div className="nome">{props.username}</div>
+          <div className="razao">{props.status}</div>
         </div>
       </div>
-      <div class="seguir">Seguir</div>
+      <div className="seguir">Seguir</div>
     </div>
   );
 }

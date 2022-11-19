@@ -1,11 +1,13 @@
 const posts = [
   {
+    id: 1,
     username: "meowed",
     image: "assets/img/gato-telefone.svg",
     likedBy: "respondeai",
     likes: 101523,
   },
   {
+    id: 2,
     username: "barked",
     image: "assets/img/dog.svg",
     likedBy: "adorable_animals",
@@ -15,9 +17,9 @@ const posts = [
 
 export default function Posts() {
   return (
-    <div class="posts">
+    <div className="posts">
       {posts.map((p) => (
-        <Post {...p} />
+        <Post key={p.id} {...p} />
       ))}
     </div>
   );
@@ -25,12 +27,12 @@ export default function Posts() {
 
 function Post(props) {
   return (
-    <div class="post">
+    <div className="post">
       <Topo username={props.username} />
-      <div class="conteudo">
+      <div className="conteudo">
         <img src={props.image} />
       </div>
-      <div class="fundo">
+      <div className="fundo">
         <Acoes />
         <Curtidas username={props.likedBy} likes={props.likes} />
       </div>
@@ -40,12 +42,12 @@ function Post(props) {
 
 function Topo(props) {
   return (
-    <div class="topo">
-      <div class="usuario">
+    <div className="topo">
+      <div className="usuario">
         <img src={`assets/img/${props.username}.svg`} />
         {props.username}
       </div>
-      <div class="acoes">
+      <div className="acoes">
         <ion-icon name="ellipsis-horizontal"></ion-icon>
       </div>
     </div>
@@ -55,10 +57,10 @@ function Topo(props) {
 function Acoes() {
   const botoes = ["heart-outline", "chatbubble-outline", "paper-plane-outline"];
   return (
-    <div class="acoes">
+    <div className="acoes">
       <div>
         {botoes.map((b) => (
-          <ion-icon name={b}></ion-icon>
+          <ion-icon key={b} name={b}></ion-icon>
         ))}
       </div>
       <div>
@@ -70,9 +72,9 @@ function Acoes() {
 
 function Curtidas(props) {
   return (
-    <div class="curtidas">
+    <div className="curtidas">
       <img src={`assets/img/${props.username}.svg`} />
-      <div class="texto">
+      <div className="texto">
         Curtido por <strong>{props.username}</strong> e{" "}
         <strong>outras {props.likes} pessoas</strong>
       </div>
