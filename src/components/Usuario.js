@@ -6,6 +6,7 @@ export default function Usuario() {
   return (
     <div data-test="user" className="usuario">
       <img
+        alt="profile-image"
         data-test="profile-image"
         onClick={() => setImage(changeProfile(image, "image"))}
         src={image}

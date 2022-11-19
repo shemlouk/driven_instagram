@@ -26,7 +26,7 @@ function Storie(props) {
   return (
     <div className="story">
       <div className="imagem">
-        <img src={`assets/img/${props.username}.svg`} />
+        <img alt={props.username} src={`assets/img/${props.username}.svg`} />
       </div>
       <div className="usuario">{props.username}</div>
     </div>

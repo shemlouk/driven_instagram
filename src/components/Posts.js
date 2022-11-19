@@ -35,6 +35,7 @@ function Post(props) {
       <Topo username={props.username} />
       <div className="conteudo">
         <img
+          alt="post-image"
           data-test="post-image"
           onClick={() => {
             handleLikeByImageClick(
@@ -60,7 +61,7 @@ function Topo(props) {
   return (
     <div className="topo">
       <div className="usuario">
-        <img src={`assets/img/${props.username}.svg`} />
+        <img alt={props.username} src={`assets/img/${props.username}.svg`} />
         {props.username}
       </div>
       <div className="acoes">
@@ -97,7 +98,7 @@ function Acoes(props) {
 function Curtidas(props) {
   return (
     <div className="curtidas">
-      <img src={`assets/img/${props.username}.svg`} />
+      <img alt={props.username} src={`assets/img/${props.username}.svg`} />
       <div className="texto">
         Curtido por <strong>{props.username}</strong> e{" "}
         <strong data-test="likes-number">outras {props.likes} pessoas</strong>

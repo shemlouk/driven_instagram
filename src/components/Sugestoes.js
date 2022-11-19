@@ -40,7 +40,7 @@ function Sugestao(props) {
   return (
     <div className="sugestao">
       <div className="usuario">
-        <img src={`assets/img/${props.username}.svg`} />
+        <img src={`assets/img/${props.username}.svg`} alt={props.username} />
         <div className="texto">
           <div className="nome">{props.username}</div>
           <div className="razao">{props.status}</div>
