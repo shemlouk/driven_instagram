@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const posts = [
   {
     id: 1,
@@ -55,6 +57,7 @@ function Topo(props) {
 }
 
 function Acoes() {
+  const [bookmark, setBookmark] = useState("bookmark-outline");
   const botoes = ["heart-outline", "chatbubble-outline", "paper-plane-outline"];
   return (
     <div className="acoes">
@@ -64,7 +67,10 @@ function Acoes() {
         ))}
       </div>
       <div>
-        <ion-icon name="bookmark-outline"></ion-icon>
+        <ion-icon
+          onClick={() => setBookmark(changeIcon(bookmark))}
+          name={bookmark}
+        ></ion-icon>
       </div>
     </div>
   );
@@ -80,4 +86,12 @@ function Curtidas(props) {
       </div>
     </div>
   );
+}
+
+function changeIcon(str) {
+  if (str.includes("-outline")) {
+    return str.replace("-outline", "");
+  } else {
+    return str + "-outline";
+  }
 }
