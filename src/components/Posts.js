@@ -104,7 +104,9 @@ function Curtidas(props) {
       <img alt={props.username} src={`assets/img/${props.username}.svg`} />
       <div className="texto">
         Curtido por <strong>{props.username}</strong> e{" "}
-        <strong data-test="likes-number">outras {props.likes} pessoas</strong>
+        <strong data-test="likes-number">
+          outras {props.likes.toLocaleString("pt-BR")} pessoas
+        </strong>
       </div>
     </div>
   );

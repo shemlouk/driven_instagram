@@ -122,12 +122,19 @@ body {
   height: 66px;
   width: 66px;
   background-image: url("../assets/img/story-circle.svg");
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .story .imagem img {
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  transition: 0.3s;
+}
+
+.story .imagem img:hover {
+  transform: scale(1.2);
 }
 
 .story .usuario {
@@ -190,8 +197,17 @@ body {
   cursor: pointer;
 }
 
+.post .conteudo {
+  overflow: hidden;
+}
+
 .post .conteudo img {
   width: 100%;
+  transition: 0.3s;
+}
+
+.post .conteudo img:hover {
+  transform: scale(1.05);
 }
 
 .post .fundo .acoes {
@@ -407,6 +423,11 @@ body {
 
 ion-icon {
   visibility: visible;
+  transition: 0.3s;
+}
+
+ion-icon:hover {
+  transform: scale(1.1);
 }
 
 .usuario ion-icon {
@@ -428,6 +449,8 @@ ion-icon[name="heart"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .heart-animation {
@@ -435,6 +458,7 @@ ion-icon[name="heart"] {
   width: 200px;
   height: 200px;
   animation: heart-grow 0.3s ease-out;
+  transition: none;
 }
 
 @keyframes heart-grow {
