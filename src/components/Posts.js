@@ -30,17 +30,20 @@ export default function Posts() {
 function Post(props) {
   const [likesCounter, setLikesCounter] = useState(props.likes);
   const [likesIcon, setLikesIcon] = useState("heart-outline");
+  const [animation, setAnimation] = useState("");
   return (
     <div data-test="post" className="post">
       <Topo username={props.username} />
       <div className="conteudo">
+        {animation}
         <img
           alt="post-image"
           data-test="post-image"
-          onClick={() => {
+          onDoubleClick={() => {
             handleLikeByImageClick(
               { value: likesIcon, set: setLikesIcon },
-              { value: likesCounter, set: setLikesCounter }
+              { value: likesCounter, set: setLikesCounter },
+              setAnimation
             );
           }}
           src={props.image}
@@ -107,6 +110,14 @@ function Curtidas(props) {
   );
 }
 
+function Animacao() {
+  return (
+    <div className="animation-container">
+      <ion-icon class="heart-animation" name="heart"></ion-icon>
+    </div>
+  );
+}
+
 function handleLikeByIconClick(obj) {
   obj.likesIcon.set(changeIcon(obj.likesIcon.value));
   if (obj.likesIcon.value.includes("-outline")) {
@@ -116,10 +127,12 @@ function handleLikeByIconClick(obj) {
   }
 }
 
-function handleLikeByImageClick(icon, counter) {
-  icon.set(icon.value.replace("-outline", ""));
+function handleLikeByImageClick(icon, counter, animationFunction) {
   if (icon.value.includes("-outline")) {
+    icon.set(icon.value.replace("-outline", ""));
     counter.set(counter.value + 1);
+    animationFunction(Animacao());
+    setTimeout(() => animationFunction(""), 500);
   }
 }
 
